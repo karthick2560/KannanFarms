@@ -88,7 +88,7 @@
 </head>
 <body>
   <header>
-    <img src="Logo.png" alt="Kannan Farms Logo">
+    <img src="Logo-removebg-preview.png" alt="Kannan Farms Logo">
     <h1>Kannan Farms</h1>
     <p>Natural Products for a Healthier You</p>
   </header>
