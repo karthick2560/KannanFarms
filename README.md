@@ -43,11 +43,17 @@
     .carousel {
       position: relative;
       width: 100%;
+      padding-top: 133.33%; /* 4:3 Aspect Ratio */
       overflow: hidden;
       border-radius: 10px;
     }
     .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: none;
       transition: opacity 0.5s ease-in-out;
     }
@@ -118,7 +124,7 @@
   </footer>
 
   <script>
-    function setupCarousel(carouselId) {
+    function setupCarousel(carouselId, interval = 3000) {
       const carousel = document.getElementById(carouselId);
       const images = carousel.getElementsByTagName('img');
       let index = 0;
@@ -126,11 +132,11 @@
         images[index].classList.remove('active');
         index = (index + 1) % images.length;
         images[index].classList.add('active');
-      }, 3000);
+      }, interval);
     }
 
-    setupCarousel('banana-carousel');
-    setupCarousel('moringa-carousel');
+    setupCarousel('banana-carousel', 4000); // Banana image changes every 4 seconds
+    setupCarousel('moringa-carousel', 4000); // Moringa image changes every 4 seconds
   </script>
 </body>
 </html>
