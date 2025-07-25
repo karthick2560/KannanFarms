@@ -97,7 +97,7 @@
       </div>
       <h2>Banana Powder</h2>
       <p>Ideal for children and gym-goers. Natural weight gain and energy booster.</p>
-      <a class="whatsapp-button" href="https://wa.me/919000000000?text=I%20want%20to%20order%20Banana%20Powder">Order on WhatsApp</a>
+      <a class="whatsapp-button" href="https://wa.me/916381594945?text=I%20want%20to%20order%20Banana%20Powder">Order on WhatsApp</a>
     </div>
 
     <div class="product">
@@ -109,7 +109,7 @@
       </div>
       <h2>Moringa Powder</h2>
       <p>Rich in vitamins and antioxidants. A daily dose of health in every spoon.</p>
-      <a class="whatsapp-button" href="https://wa.me/919000000000?text=I%20want%20to%20order%20Moringa%20Powder">Order on WhatsApp</a>
+      <a class="whatsapp-button" href="https://wa.me/916381594945?text=I%20want%20to%20order%20Moringa%20Powder">Order on WhatsApp</a>
     </div>
   </div>
 
