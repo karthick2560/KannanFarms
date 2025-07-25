@@ -88,7 +88,7 @@
 </head>
 <body>
   <header>
-    <img src="Logo-removebg-preview.png" alt="Kannan Farms Logo">
+    <img src="ChatGPT Image Jul 26, 2025, 02_52_58 AM.png" alt="Kannan Farms Logo">
     <h1>Kannan Farms</h1>
     <p>Natural Products for a Healthier You</p>
   </header>
