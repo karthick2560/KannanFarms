@@ -82,7 +82,7 @@
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Kannan Farms Logo">
+    <img src="Logo.png" alt="Kannan Farms Logo">
     <h1>Kannan Farms</h1>
     <p>Natural Products for a Healthier You</p>
   </header>
@@ -90,9 +90,10 @@
   <div class="container">
     <div class="product">
       <div class="carousel" id="banana-carousel">
-        <img src="banana1.jpg" class="active" alt="Banana Powder 1">
-        <img src="banana2.jpg" alt="Banana Powder 2">
-        <img src="banana3.jpg" alt="Banana Powder 3">
+        <img src="Banana 1.png" class="active" alt="Banana Powder 1">
+        <img src="Banana 2.png" alt="Banana Powder 2">
+        <img src="Banana 3.png" alt="Banana Powder 3">
+        <img src="Banana 4.png" alt="Banana Powder 4">
       </div>
       <h2>Banana Powder</h2>
       <p>Ideal for children and gym-goers. Natural weight gain and energy booster.</p>
@@ -101,9 +102,10 @@
 
     <div class="product">
       <div class="carousel" id="moringa-carousel">
-        <img src="moringa1.jpg" class="active" alt="Moringa Powder 1">
-        <img src="moringa2.jpg" alt="Moringa Powder 2">
-        <img src="moringa3.jpg" alt="Moringa Powder 3">
+        <img src="Moringa 1.png" class="active" alt="Moringa Powder 1">
+        <img src="Moringa 2.png" alt="Moringa Powder 2">
+        <img src="Moringa 3.png" alt="Moringa Powder 3">
+        <img src="Moinga 4.png" alt="Moringa Powder 4">
       </div>
       <h2>Moringa Powder</h2>
       <p>Rich in vitamins and antioxidants. A daily dose of health in every spoon.</p>
