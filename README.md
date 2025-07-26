@@ -25,7 +25,6 @@
       left: 10px;
       height: 50px;
       background-color: transparent;
-      mix-blend-mode: multiply;
     }
     .container {
       display: flex;
