@@ -15,27 +15,67 @@
       background-color: #f8f8f8;
       color: #333;
     }
+
     header {
       background-color: #4CAF50;
       color: white;
       padding: 20px;
       text-align: center;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: 15px;
     }
+
     header img {
-      position: absolute;
-      top: 20px;
-      left: 10px;
       height: 100px;
-      background-color: transparent;
-      flex-wrap: wrap;
+      width: auto;
     }
+
+    .logo {
+      height: 100px;
+      width: auto;
+    }
+
+    .site-title {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    .tagline {
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      header img {
+        height: 80px;
+        margin-bottom: 10px;
+      }
+
+      .site-title {
+        font-size: 26px;
+      }
+
+      .tagline {
+        font-size: 14px;
+      }
+    }
+
     .container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 20px;
     }
+
     .product {
       background: white;
       border-radius: 10px;
@@ -45,13 +85,15 @@
       width: 300px;
       text-align: center;
     }
+
     .carousel {
       position: relative;
       width: 100%;
-      padding-top: 133.33%; /* 4:3 Aspect Ratio */
+      padding-top: 133.33%;
       overflow: hidden;
       border-radius: 10px;
     }
+
     .carousel img {
       position: absolute;
       top: 0;
@@ -62,15 +104,19 @@
       display: none;
       transition: opacity 0.5s ease-in-out;
     }
+
     .carousel img.active {
       display: block;
     }
+
     .product h2 {
       margin: 15px 0 10px;
     }
+
     .product p {
       font-size: 14px;
     }
+
     .whatsapp-button {
       background-color: #25D366;
       color: white;
@@ -83,25 +129,23 @@
       text-decoration: none;
       display: inline-block;
     }
+
     footer {
       text-align: center;
       padding: 20px;
       background-color: #4CAF50;
       color: white;
     }
-    <head>
-  <style>
-    .logo {
-      height: 250px;
-      width: auto;
-    }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="Logowoback.png" alt="Kannan Farms Logo">
-    <h1>Kannan Farms</h1>
-    <p>Natural Products for a Healthier You</p>
+    <img src="Logowoback.png" alt="Kannan Farms Logo" class="logo">
+    <div>
+      <h1 class="site-title">Kannan Farms</h1>
+      <p class="tagline">Natural Products for a Healthier You</p>
+    </div>
   </header>
 
   <div class="container">
@@ -146,8 +190,8 @@
       }, interval);
     }
 
-    setupCarousel('banana-carousel', 4000); // Banana image changes every 4 seconds
-    setupCarousel('moringa-carousel', 4000); // Moringa image changes every 4 seconds
+    setupCarousel('banana-carousel', 4000);
+    setupCarousel('moringa-carousel', 4000);
   </script>
 
 </body>
