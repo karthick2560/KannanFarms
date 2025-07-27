@@ -20,52 +20,46 @@
       background-color: #4CAF50;
       color: white;
       padding: 20px;
-      text-align: center;
-      position: relative;
+      text-align: left;
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-direction: row;
-      gap: 15px;
+      justify-content: start;
+      flex-wrap: wrap;
     }
 
     header img {
       height: 100px;
-      width: auto;
+      margin-right: 20px;
     }
 
-    .logo {
-      height: 100px;
-      width: auto;
+    header .title-group {
+      display: flex;
+      flex-direction: column;
     }
 
-    .site-title {
-      font-size: 32px;
+    header h1 {
       margin: 0;
+      font-size: 28px;
     }
 
-    .tagline {
+    header p {
+      margin: 5px 0 0;
       font-size: 16px;
-      margin-top: 5px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       header {
         flex-direction: column;
         text-align: center;
+        align-items: center;
       }
 
       header img {
-        height: 80px;
-        margin-bottom: 10px;
+        margin: 0 0 10px;
       }
 
-      .site-title {
-        font-size: 26px;
-      }
-
-      .tagline {
-        font-size: 14px;
+      header .title-group {
+        align-items: center;
       }
     }
 
@@ -141,10 +135,10 @@
 <body>
 
   <header>
-    <img src="Logowoback.png" alt="Kannan Farms Logo" class="logo">
-    <div>
-      <h1 class="site-title">Kannan Farms</h1>
-      <p class="tagline">Natural Products for a Healthier You</p>
+    <img src="Logowoback.png" alt="Kannan Farms Logo">
+    <div class="title-group">
+      <h1>Kannan Farms</h1>
+      <p>Natural Products for a Healthier You</p>
     </div>
   </header>
 
