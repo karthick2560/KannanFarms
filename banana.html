@@ -4,112 +4,165 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Banana Powder - Kannan Farms</title>
+  <meta name="description" content="Buy 100% natural, FSSAI-certified banana powder from Kannan Farms. Perfect for kids, gym-goers, and healthy weight gain. No sugar, no preservatives." />
+  <meta name="keywords" content="banana powder, natural banana powder, banana powder for kids, gym supplement, FSSAI certified banana powder, Kannan Farms, weight gain powder, baby food banana powder, no sugar banana powder" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #fdfcf9;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background: linear-gradient(to bottom right, #fffbe7, #f4f4f4);
     }
 
-    h1 {
-      font-size: 32px;
-      margin-top: 40px;
-      color: #2c2c2c;
-    }
-
-    .product-card {
+    header {
+      background-color: #fff;
       text-align: center;
+      padding: 20px 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      max-height: 70px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin: 10px 0 5px;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #666;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
       background: #fff;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      padding: 30px 20px;
-      margin: 30px;
-      max-width: 400px;
-      width: 90%;
-      animation: fadeIn 0.8s ease;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
-    .price-box {
-      background-color: #fffbe6;
-      border: 2px dashed #c0942d;
+    .product {
+      text-align: center;
+    }
+
+    .main-image {
+      position: relative;
+      width: 100%;
+      height: 700px;
+      overflow: hidden;
       border-radius: 12px;
-      padding: 15px 25px;
-      margin-bottom: 25px;
+      user-select: none;
     }
 
-    .price-box p {
-      margin: 6px 0;
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: opacity 0.6s ease-in-out;
+      pointer-events: none;
     }
 
-    .price-box .size {
-      font-size: 18px;
-      color: #444;
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      overflow-x: auto;
+      padding-bottom: 10px;
     }
 
-    .price-box .price {
+    .thumbnails img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, border 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .thumbnails img.active {
+      border-color: #c0942d;
+      transform: scale(1.05);
+    }
+
+    .product h2 {
       font-size: 26px;
-      font-weight: bold;
+      margin: 20px 0 10px;
       color: #c0942d;
     }
 
-    label {
+    .product p {
       font-size: 16px;
-      font-weight: 500;
+      color: #444;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
 
-    input[type="number"] {
-      margin-top: 10px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      width: 100px;
+    .section-title {
+      font-size: 20px;
+      color: #c0942d;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    ul.benefits-list {
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      padding-left: 20px;
+    }
+
+    ul.benefits-list li {
+      margin-bottom: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    footer {
       text-align: center;
+      padding: 15px;
+      background-color: #f1f1f1;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
     }
 
-    input[type="number"]:focus {
-      box-shadow: 0 0 10px #c0942d;
-      outline: none;
+    @media (max-width: 600px) {
+      .main-image {
+        height: 280px;
+      }
+
+      .thumbnails img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .product h2 {
+        font-size: 22px;
+      }
     }
 
-    .btn {
-      margin-top: 25px;
-      background-color: #c0942d;
-      color: white;
-      padding: 14px 36px;
-      border: none;
-      border-radius: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #a97f22;
-    }
-
-    /* Cart popup */
+    /* Cart Popup Styles */
     #cartPopup {
       display: none;
       position: fixed;
       top: 0;
-      right: -320px;
+      right: 0;
       width: 300px;
       height: 100%;
       background: #fff;
-      box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+      box-shadow: -4px 0 10px rgba(0,0,0,0.2);
       padding: 20px;
       z-index: 1000;
-      transition: right 0.5s ease-in-out;
+      transition: all 0.3s ease;
     }
 
     #cartPopup h2 {
@@ -120,81 +173,164 @@
 
     #cartPopup button {
       margin-top: 10px;
-      width: 100%;
     }
 
-    #cartPopup .close-btn {
-      background: none;
+    #cartPopup p {
+      font-size: 15px;
+      margin: 6px 0;
+    }
+
+    button.cart-btn {
+      background-color: #c0942d;
+      color: white;
+      padding: 12px 28px;
       border: none;
-      color: #c0942d;
-      text-decoration: underline;
+      border-radius: 30px;
+      font-size: 16px;
       cursor: pointer;
-      font-size: 14px;
-      margin-top: 10px;
+      font-weight: bold;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
+    button.cart-btn:hover {
+      background-color: #b0831a;
     }
   </style>
 </head>
 <body>
 
-  <h1>Banana Powder</h1>
-  <div class="product-card">
-    <div class="price-box">
-      <p class="size">Net Weight: <strong>200g</strong></p>
-      <p class="price">₹250</p>
+<header>
+  <img src="Logowoback.png" alt="Kannan Farms Logo">
+  <h1>Kannan Farms</h1>
+  <p>Natural Products for a Healthier You</p>
+</header>
+
+<div class="container">
+  <div class="product">
+    <div class="main-image" id="swipeArea">
+      <img id="mainImage" src="Banana 1.png" alt="Main Banana Powder Image">
+    </div>
+    <div class="thumbnails">
+      <img src="Banana 1.png" class="thumb active" onclick="changeImage(0)">
+      <img src="Banana 2.png" class="thumb" onclick="changeImage(1)">
+      <img src="Banana 3.png" class="thumb" onclick="changeImage(2)">
+      <img src="Banana 4.png" class="thumb" onclick="changeImage(3)">
     </div>
 
-    <label for="count">Select Quantity:</label><br>
-    <input type="number" id="count" name="count" min="1" value="1" />
+    <h2>Banana Powder</h2>
+    <p>
+      Banana Powder is a rich natural energy source packed with potassium and dietary fiber. 
+      Perfect for children needing healthy weight gain and ideal for gym goers as a clean protein source. 
+      No additives, only pure sun-dried banana goodness.
+    </p>
 
-    <button class="btn" onclick="addToCart()">Add to Cart</button>
+    <h3 class="section-title">Certified Safe & Clean Nutrition</h3>
+    <p>Our Banana Powder is <strong>FSSAI licensed</strong> and produced under strict hygiene conditions. We ensure every pack is free from contaminants and packed with care using food-safe materials for your family's wellness.</p>
+
+    <h3 class="section-title">Pure Banana Goodness – Nothing Else</h3>
+    <p>Kannan Farms Banana Powder is made with <strong>100% sun-dried native bananas</strong>, finely ground without any added sugar, preservatives, or artificial flavors. Just pure fruit, naturally sweet and full of nutrition.</p>
+
+    <h3 class="section-title">Health Benefits of Banana Powder</h3>
+    <ul class="benefits-list">
+      <li>✔️ Supports healthy weight gain in children and adults</li>
+      <li>✔️ Boosts energy and stamina — perfect for gym enthusiasts</li>
+      <li>✔️ Rich in potassium and dietary fiber — aids digestion and heart health</li>
+      <li>✔️ Natural source of resistant starch — helps improve gut health</li>
+      <li>✔️ Gentle on the stomach — ideal for babies, kids, and elders</li>
+      <li>✔️ Can help manage anemia due to its iron content</li>
+    </ul>
+
+    <h3 class="section-title">Versatile & Easy to Use</h3>
+    <p>✅ Mix in milk or smoothies,  
+    ✅ Add to porridge or baby food,  
+    ✅ Blend into protein shakes, pancakes, or baked goods.  
+    No fuss, no mess — just delicious nutrition in seconds.</p>
+
+    <h3 class="section-title">Farm to Table with Love</h3>
+    <p>Our banana powder is <strong>lovingly made from bananas grown on our own farm</strong> in Tamil Nadu. They are harvested at peak ripeness, solar dried, and ground to perfection — preserving the taste and nutrition in every spoonful.</p>
+
+    <h3 class="section-title">Why Choose Kannan Farms?</h3>
+    <ul class="benefits-list">
+      <li>🍌 FSSAI Certified and Quality Guaranteed</li>
+      <li>🍌 No added sugar, salt, or chemicals</li>
+      <li>🍌 Made from naturally ripened bananas only</li>
+      <li>🍌 Safe for infants, toddlers, fitness lovers, and seniors</li>
+      <li>🍌 100% Natural and Homegrown</li>
+    </ul>
+
+    <!-- Add to Cart UI -->
+    <div style="margin-top: 30px; text-align: center;">
+      <label for="size" style="font-weight: bold;">Select Weight:</label><br>
+      <select id="size" name="size" style="padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="100g" data-price="120">100g - ₹120</option>
+        <option value="250g" data-price="280">250g - ₹280</option>
+        <option value="500g" data-price="540">500g - ₹540</option>
+        <option value="1kg" data-price="1000">1kg - ₹1000</option>
+      </select>
+      <br>
+      <label for="count" style="font-weight: bold;">Select Quantity:</label><br>
+      <input type="number" id="count" min="1" value="1" style="padding: 10px; width: 80px; border-radius: 8px; border: 1px solid #ccc;">
+      <br><br>
+      <button onclick="addToCart()" class="cart-btn">Add to Cart</button>
+    </div>
   </div>
+</div>
 
-  <!-- Slide-in Cart -->
-  <div id="cartPopup">
-    <h2>🛒 Your Cart</h2>
-    <div id="cartDetails"></div>
-    <button class="btn" onclick="checkout()">Proceed to Checkout</button>
-    <button class="close-btn" onclick="closeCart()">Close Cart</button>
-  </div>
+<footer>
+  <p>&copy; 2025 Kannan Farms. All rights reserved.</p>
+</footer>
 
-  <script>
-    function addToCart() {
-      const count = parseInt(document.getElementById("count").value);
-      const price = 250;
-      const total = price * count;
+<!-- Cart Popup -->
+<div id="cartPopup">
+  <h2>🛒 Your Cart</h2>
+  <div id="cartDetails"></div>
+  <button onclick="checkout()" style="background-color:#25D366; color:white; padding:10px 20px; border:none; border-radius:20px; font-size:15px; cursor:pointer;">Proceed to Checkout</button>
+  <br><br>
+  <button onclick="closeCart()" style="background:none; border:none; color:#c0942d; text-decoration:underline; cursor:pointer;">Close Cart</button>
+</div>
 
-      const cartHTML = `
-        <p><strong>Banana Powder (200g)</strong></p>
-        <p>Quantity: ${count}</p>
-        <p>Price per unit: ₹${price}</p>
-        <p style="font-size:18px;"><strong>Total: ₹${total}</strong></p>
-      `;
-      document.getElementById("cartDetails").innerHTML = cartHTML;
+<!-- Scripts -->
+<script>
+  const images = ['Banana 1.png','Banana 2.png','Banana 3.png','Banana 4.png'];
+  let currentIndex = 0;
+  const mainImage = document.getElementById('mainImage');
+  const thumbs = document.querySelectorAll('.thumb');
 
-      const cart = document.getElementById("cartPopup");
-      cart.style.display = "block";
-      setTimeout(() => {
-        cart.style.right = "0";
-      }, 10);
-    }
+  function changeImage(index) {
+    currentIndex = index;
+    mainImage.style.opacity = 0;
+    setTimeout(() => {
+      mainImage.src = images[currentIndex];
+      mainImage.style.opacity = 1;
+    }, 300);
+    thumbs.forEach(t => t.classList.remove('active'));
+    thumbs[index].classList.add('active');
+  }
 
-    function closeCart() {
-      const cart = document.getElementById("cartPopup");
-      cart.style.right = "-320px";
-      setTimeout(() => {
-        cart.style.display = "none";
-      }, 500);
-    }
+  function addToCart() {
+    const sizeEl = document.getElementById("size");
+    const size = sizeEl.value;
+    const price = parseInt(sizeEl.options[sizeEl.selectedIndex].dataset.price);
+    const count = parseInt(document.getElementById("count").value);
+    const total = price * count;
 
-    function checkout() {
-      alert("Redirecting to checkout (not implemented yet).");
-    }
-  </script>
+    const cartHTML = `
+      <p><strong>Banana Powder (${size})</strong></p>
+      <p>Quantity: ${count}</p>
+      <p>Price per unit: ₹${price}</p>
+      <p><strong>Total: ₹${total}</strong></p>
+    `;
+    document.getElementById("cartDetails").innerHTML = cartHTML;
+    document.getElementById("cartPopup").style.display = "block";
+  }
+
+  function closeCart() {
+    document.getElementById("cartPopup").style.display = "none";
+  }
+
+  function checkout() {
+    alert("Redirecting to checkout (not yet implemented).");
+  }
+</script>
 
 </body>
 </html>
