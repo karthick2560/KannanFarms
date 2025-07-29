@@ -7,10 +7,10 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background: linear-gradient(to bottom right, #f4fff4, #f8f8f8);
     }
 
     header {
@@ -48,42 +48,71 @@
       text-align: center;
     }
 
+    .main-image {
+      position: relative;
+      width: 100%;
+      height: 700px;
+      overflow: hidden;
+      border-radius: 12px;
+      user-select: none;
+    }
+
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: opacity 0.6s ease-in-out;
+      pointer-events: none;
+    }
+
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .thumbnails img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, border 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .thumbnails img.active {
+      border-color: #2c7a2f;
+      transform: scale(1.05);
+    }
+
     .product h2 {
       font-size: 26px;
-      margin-top: 20px;
+      margin: 20px 0 10px;
       color: #2c7a2f;
     }
 
     .product p {
       font-size: 16px;
-      margin: 20px 0;
       color: #444;
-    }
-
-    .carousel {
-      display: flex;
-      overflow-x: auto;
-      gap: 10px;
-      padding: 10px 0;
-      scroll-snap-type: x mandatory;
-    }
-
-    .carousel img {
-      height: 200px;
-      border-radius: 10px;
-      scroll-snap-align: start;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     .whatsapp-button {
       display: inline-block;
       background-color: #25D366;
       color: white;
-      padding: 12px 24px;
-      border-radius: 25px;
+      padding: 12px 28px;
+      border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
       font-size: 16px;
-      margin-top: 20px;
+      transition: background 0.3s;
     }
 
     .whatsapp-button:hover {
@@ -100,8 +129,13 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 22px;
+      .main-image {
+        aspect-ratio: 4 / 3;
+      }
+
+      .thumbnails img {
+        width: 60px;
+        height: 60px;
       }
 
       .product h2 {
@@ -117,29 +151,97 @@
 </head>
 <body>
 
-  <header>
-    <img src="Logowoback.png" alt="Kannan Farms Logo">
-    <h1>Kannan Farms</h1>
-    <p>Natural Products for a Healthier You</p>
-  </header>
+<header>
+  <img src="Logowoback.png" alt="Kannan Farms Logo">
+  <h1>Kannan Farms</h1>
+  <p>Natural Products for a Healthier You</p>
+</header>
 
-  <div class="container">
-    <div class="product">
-      <div class="carousel">
-        <img src="Moringa 1.png" alt="Moringa Image 1">
-        <img src="Moringa 2.png" alt="Moringa Image 2">
-        <img src="Moringa 3.png" alt="Moringa Image 3">
-        <img src="Moinga 4.png" alt="Moringa Image 4">
-      </div>
-      <h2>Moringa Powder</h2>
-      <p>Moringa Powder is a powerhouse of vitamins and antioxidants. It boosts immunity, improves energy, and supports overall well-being. Sourced fresh and naturally processed for maximum benefits.</p>
-      <a class="whatsapp-button" href="https://wa.me/916381594945?text=I%20want%20to%20order%20Moringa%20Powder">Order on WhatsApp</a>
+<div class="container">
+  <div class="product">
+    <div class="main-image" id="swipeArea">
+      <img id="mainImage" src="Moringa 1.png" alt="Main Moringa Image">
     </div>
+    <div class="thumbnails">
+      <img src="Moringa 1.png" alt="Thumb 1" class="thumb active" onclick="changeImage(0)">
+      <img src="Moringa 2.png" alt="Thumb 2" class="thumb" onclick="changeImage(1)">
+      <img src="Moringa 3.png" alt="Thumb 3" class="thumb" onclick="changeImage(2)">
+      <img src="Moinga 4.png" alt="Thumb 4" class="thumb" onclick="changeImage(3)">
+    </div>
+    <h2>Moringa Powder</h2>
+    <p>Moringa Powder is a powerhouse of vitamins and antioxidants. It boosts immunity, improves energy, and supports overall well-being. Sourced fresh and naturally processed for maximum benefits.</p>
+    <a class="whatsapp-button" href="https://wa.me/916381594945?text=I%20want%20to%20order%20Moringa%20Powder">Order on WhatsApp</a>
   </div>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Kannan Farms. All rights reserved.</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Kannan Farms. All rights reserved.</p>
+</footer>
+
+<script>
+  const images = [
+    'Moringa 1.png',
+    'Moringa 2.png',
+    'Moringa 3.png',
+    'Moringa 4.png'
+  ];
+
+  let currentIndex = 0;
+  const mainImage = document.getElementById('mainImage');
+  const thumbs = document.querySelectorAll('.thumb');
+
+  function changeImage(index) {
+    currentIndex = index;
+    mainImage.style.opacity = 0;
+    setTimeout(() => {
+      mainImage.src = images[currentIndex];
+      mainImage.style.opacity = 1;
+    }, 300);
+
+    thumbs.forEach(t => t.classList.remove('active'));
+    thumbs[index].classList.add('active');
+  }
+
+  function autoSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    changeImage(currentIndex);
+  }
+
+  setInterval(autoSlide, 4000);
+
+  const swipeArea = document.getElementById('swipeArea');
+  let startX = 0;
+
+  swipeArea.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  swipeArea.addEventListener('touchend', (e) => {
+    let endX = e.changedTouches[0].clientX;
+    handleSwipe(startX, endX);
+  });
+
+  swipeArea.addEventListener('mousedown', (e) => {
+    startX = e.clientX;
+  });
+
+  swipeArea.addEventListener('mouseup', (e) => {
+    let endX = e.clientX;
+    handleSwipe(startX, endX);
+  });
+
+  function handleSwipe(start, end) {
+    const diff = start - end;
+    if (Math.abs(diff) > 30) {
+      if (diff > 0) {
+        currentIndex = (currentIndex + 1) % images.length;
+      } else {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+      }
+      changeImage(currentIndex);
+    }
+  }
+</script>
 
 </body>
 </html>
