@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Banana Powder - Kannan Farms</title>
+  <title>Banana Powder 200g - Natural Weight Gain & Energy Booster | Kannan Farms</title>
+  <meta name="description" content="Buy 100% natural Banana Powder (200g) from Kannan Farms. Ideal for kids and gym-goers. Boosts weight, energy, and digestion. No preservatives or added sugar. ₹250.">
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <style>
     body {
@@ -49,15 +50,27 @@
     .thumb.active {
       border: 2px solid #c0942d;
     }
-    h2 {
+    h1 {
       margin-top: 20px;
-      font-size: 28px;
+      font-size: 30px;
       color: #222;
+      text-align: center;
+    }
+    h2 {
+      font-size: 20px;
+      margin-top: 30px;
+      color: #555;
     }
     p {
       font-size: 16px;
       line-height: 1.6;
       text-align: center;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
     }
     .price-box {
       background-color: #fffbe6;
@@ -133,33 +146,42 @@
 <body>
   <div class="container">
     <div class="product">
-      <!-- Image Section -->
-      <div class="main-image" id="swipeArea">
-        <img id="mainImage" src="Banana 1.png" alt="Main Banana Powder Image" />
+      <!-- Images -->
+      <div class="main-image">
+        <img id="mainImage" src="Banana 1.png" alt="Banana Powder 200g - Front View" />
       </div>
       <div class="thumbnails">
-        <img src="Banana 1.png" class="thumb active" onclick="changeImage(0)">
-        <img src="Banana 2.png" class="thumb" onclick="changeImage(1)">
-        <img src="Banana 3.png" class="thumb" onclick="changeImage(2)">
-        <img src="Banana 4.png" class="thumb" onclick="changeImage(3)">
+        <img src="Banana 1.png" class="thumb active" onclick="changeImage(0)" alt="Banana Powder Image 1">
+        <img src="Banana 2.png" class="thumb" onclick="changeImage(1)" alt="Banana Powder Image 2">
+        <img src="Banana 3.png" class="thumb" onclick="changeImage(2)" alt="Banana Powder Image 3">
+        <img src="Banana 4.png" class="thumb" onclick="changeImage(3)" alt="Banana Powder Image 4">
       </div>
 
-      <!-- Product Info -->
-      <h2>Banana Powder</h2>
-      <p>Banana Powder is a rich natural energy source packed with potassium and dietary fiber. Ideal for kids and fitness enthusiasts. Helps in weight gain, improves digestion, and builds stamina.</p>
+      <!-- Title -->
+      <h1>Banana Powder (200g)</h1>
+
+      <!-- Description -->
+      <p>Our Banana Powder is made from 100% naturally ripened bananas, gently solar-dried and ground without any additives. It's a delicious and healthy source of energy, perfect for children, athletes, and anyone looking to gain weight naturally.</p>
+
+      <!-- Benefits -->
+      <h2>Health Benefits:</h2>
+      <ul>
+        <li>✅ Promotes healthy weight gain in kids and adults</li>
+        <li>✅ Excellent source of natural energy and stamina</li>
+        <li>✅ Rich in potassium, magnesium, and dietary fiber</li>
+        <li>✅ Aids digestion and supports gut health</li>
+        <li>✅ 100% Natural – No preservatives, sugar, or additives</li>
+      </ul>
 
       <!-- Price & Quantity -->
-      <div style="margin-top: 30px; text-align: center;">
-        <div class="price-box">
-          <p class="size">Net Weight: <strong>200g</strong></p>
-          <p class="price">₹250</p>
-        </div>
-
-        <label for="count" style="font-weight: 500;">Select Quantity:</label><br>
-        <input type="number" id="count" name="count" min="1" value="1"><br><br>
-
-        <button onclick="addToCart()" class="cart-btn">Add to Cart</button>
+      <div class="price-box">
+        <p class="size">Net Weight: <strong>200g</strong></p>
+        <p class="price">₹250</p>
       </div>
+
+      <label for="count">Select Quantity:</label><br>
+      <input type="number" id="count" name="count" min="1" value="1"><br><br>
+      <button onclick="addToCart()" class="cart-btn">Add to Cart</button>
     </div>
   </div>
 
@@ -193,7 +215,6 @@
       const count = parseInt(document.getElementById("count").value);
       const price = 250;
       const total = price * count;
-
       const cartHTML = `
         <p><strong>Banana Powder (200g)</strong></p>
         <p>Quantity: ${count}</p>
