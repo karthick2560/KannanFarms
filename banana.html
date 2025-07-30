@@ -4,9 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Banana Powder - Kannan Farms</title>
-  <meta name="description" content="Buy 100% natural, FSSAI-certified banana powder from Kannan Farms. 200g pack. Perfect for kids, gym-goers, and healthy weight gain." />
-  <meta name="keywords" content="banana powder, FSSAI certified, Kannan Farms, weight gain powder, natural banana powder, baby food" />
+  <meta name="description" content="Buy 100% natural, FSSAI-certified banana powder from Kannan Farms. Perfect for kids, gym-goers, and healthy weight gain. No sugar, no preservatives." />
+  <meta name="keywords" content="banana powder, natural banana powder, banana powder for kids, gym supplement, FSSAI certified banana powder, Kannan Farms, weight gain powder, baby food banana powder, no sugar banana powder" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Banana Powder",
+    "image": [
+      "Banana 1.png",
+      "Banana 2.png",
+      "Banana 3.png",
+      "Banana 4.png"
+    ],
+    "description": "Kannan Farms Banana Powder is FSSAI certified and made from sun-dried bananas. 100% natural, no preservatives or added sugar. Ideal for babies, kids, fitness lovers, and anyone seeking natural weight gain.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Kannan Farms"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "url": "https://wa.me/916381594945?text=I%20want%20to%20order%20Banana%20Powder"
+    }
+  }
+  </script>
 
   <style>
     body {
@@ -14,7 +39,6 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom right, #fffbe7, #f4f4f4);
-      overflow-x: hidden;
     }
 
     header {
@@ -53,6 +77,7 @@
     }
 
     .main-image {
+      position: relative;
       width: 100%;
       height: 700px;
       overflow: hidden;
@@ -93,6 +118,19 @@
       transform: scale(1.05);
     }
 
+    .product h2 {
+      font-size: 26px;
+      margin: 20px 0 10px;
+      color: #c0942d;
+    }
+
+    .product p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
     .section-title {
       font-size: 20px;
       color: #c0942d;
@@ -113,6 +151,22 @@
       line-height: 1.5;
     }
 
+    .whatsapp-button {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #1ebe5d;
+    }
+
     footer {
       text-align: center;
       padding: 15px;
@@ -122,88 +176,23 @@
       color: #777;
     }
 
-    .cart-btn {
-      background-color: #c0942d;
-      color: white;
-      padding: 12px 28px;
-      border: none;
-      border-radius: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .cart-btn:hover {
-      background-color: #b0831a;
-    }
-
-    .quantity-input {
-      padding: 10px;
-      width: 80px;
-      border-radius: 10px;
-      border: 2px solid #ccc;
-      font-size: 16px;
-      transition: border-color 0.3s, transform 0.2s;
-    }
-
-    .quantity-input:focus {
-      outline: none;
-      border-color: #c0942d;
-      transform: scale(1.05);
-    }
-
-    /* Fancy Slide-In Cart */
-    #cartPopup {
-      display: none;
-      position: fixed;
-      top: 0;
-      right: -400px;
-      width: 320px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -4px 0 12px rgba(0,0,0,0.3);
-      padding: 20px;
-      z-index: 999;
-      transition: right 0.4s ease;
-    }
-
-    #cartPopup.active {
-      display: block;
-      right: 0;
-    }
-
-    #cartPopup h2 {
-      color: #c0942d;
-      margin-top: 0;
-      font-size: 22px;
-    }
-
-    #cartPopup p {
-      font-size: 15px;
-      margin: 10px 0;
-    }
-
-    #cartPopup button {
-      margin-top: 15px;
-    }
-
-    .close-link {
-      background: none;
-      border: none;
-      color: #c0942d;
-      text-decoration: underline;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
     @media (max-width: 600px) {
       .main-image {
         height: 280px;
       }
+
       .thumbnails img {
         width: 60px;
         height: 60px;
+      }
+
+      .product h2 {
+        font-size: 22px;
+      }
+
+      .whatsapp-button {
+        padding: 10px 20px;
+        font-size: 14px;
       }
     }
   </style>
@@ -222,39 +211,57 @@
       <img id="mainImage" src="Banana 1.png" alt="Main Banana Powder Image">
     </div>
     <div class="thumbnails">
-      <img src="Banana 1.png" class="thumb active" onclick="changeImage(0)">
-      <img src="Banana 2.png" class="thumb" onclick="changeImage(1)">
-      <img src="Banana 3.png" class="thumb" onclick="changeImage(2)">
-      <img src="Banana 4.png" class="thumb" onclick="changeImage(3)">
+      <img src="Banana 1.png" alt="Thumb 1" class="thumb active" onclick="changeImage(0)">
+      <img src="Banana 2.png" alt="Thumb 2" class="thumb" onclick="changeImage(1)">
+      <img src="Banana 3.png" alt="Thumb 3" class="thumb" onclick="changeImage(2)">
+      <img src="Banana 4.png" alt="Thumb 4" class="thumb" onclick="changeImage(3)">
     </div>
-
-    <h2>Banana Powder - 200g</h2>
-    <p style="margin-bottom: 6px;"><strong>Price:</strong> ₹250</p>
-
-    <div style="margin: 25px 0;">
-      <label for="count" style="font-weight: bold;">Select Quantity:</label><br>
-      <input type="number" id="count" class="quantity-input" min="1" value="1" />
-      <br><br>
-      <button onclick="addToCart()" class="cart-btn">Add to Cart</button>
-    </div>
+    <h2>Banana Powder</h2>
+    <p>
+      Banana Powder is a rich natural energy source packed with potassium and dietary fiber. 
+      Perfect for children needing healthy weight gain and ideal for gym goers as a clean protein source. 
+      No additives, only pure sun-dried banana goodness.
+    </p>
 
     <h3 class="section-title">Certified Safe & Clean Nutrition</h3>
     <p>Our Banana Powder is <strong>FSSAI licensed</strong> and produced under strict hygiene conditions. We ensure every pack is free from contaminants and packed with care using food-safe materials for your family's wellness.</p>
 
-    <h3 class="section-title">Health Benefits</h3>
+    <h3 class="section-title">Pure Banana Goodness – Nothing Else</h3>
+    <p>Kannan Farms Banana Powder is made with <strong>100% sun-dried native bananas</strong>, finely ground without any added sugar, preservatives, or artificial flavors. Just pure fruit, naturally sweet and full of nutrition.</p>
+
+    <h3 class="section-title">Health Benefits of Banana Powder</h3>
     <ul class="benefits-list">
       <li>✔️ Supports healthy weight gain in children and adults</li>
       <li>✔️ Boosts energy and stamina — perfect for gym enthusiasts</li>
       <li>✔️ Rich in potassium and dietary fiber — aids digestion and heart health</li>
+      <li>✔️ Natural source of resistant starch — helps improve gut health</li>
       <li>✔️ Gentle on the stomach — ideal for babies, kids, and elders</li>
+      <li>✔️ Can help manage anemia due to its iron content</li>
     </ul>
+
+    <h3 class="section-title">Versatile & Easy to Use</h3>
+    <p>✅ Mix in milk or smoothies,  
+    ✅ Add to porridge or baby food,  
+    ✅ Blend into protein shakes, pancakes, or baked goods.  
+    No fuss, no mess — just delicious nutrition in seconds.</p>
+
+    <h3 class="section-title">Farm to Table with Love</h3>
+    <p>Our banana powder is <strong>lovingly made from bananas grown on our own farm</strong> in Tamil Nadu. They are harvested at peak ripeness, solar dried, and ground to perfection — preserving the taste and nutrition in every spoonful.</p>
 
     <h3 class="section-title">Why Choose Kannan Farms?</h3>
     <ul class="benefits-list">
       <li>🍌 FSSAI Certified and Quality Guaranteed</li>
-      <li>🍌 100% Natural with no added sugar, salt, or chemicals</li>
+      <li>🍌 No added sugar, salt, or chemicals</li>
+      <li>🍌 Made from naturally ripened bananas only</li>
       <li>🍌 Safe for infants, toddlers, fitness lovers, and seniors</li>
+      <li>🍌 100% Natural and Homegrown</li>
     </ul>
+
+    <a class="whatsapp-button" href="https://wa.me/916381594945?text=I%20want%20to%20order%20Banana%20Powder">Order on WhatsApp</a>
+
+    <p style="display:none;">
+      banana powder India, natural banana powder for babies, banana powder for gym, organic banana powder, sugar-free banana powder, Kannan Farms banana powder, FSSAI banana powder Tamil Nadu, buy banana powder online, pure fruit powder for weight gain
+    </p>
   </div>
 </div>
 
@@ -262,18 +269,14 @@
   <p>&copy; 2025 Kannan Farms. All rights reserved.</p>
 </footer>
 
-<!-- Cart Slide-In -->
-<div id="cartPopup">
-  <h2>🛒 Your Cart</h2>
-  <div id="cartDetails"></div>
-  <button onclick="checkout()" class="cart-btn" style="width:100%;">Checkout</button>
-  <br><br>
-  <button onclick="closeCart()" class="close-link">Close Cart</button>
-</div>
-
-<!-- JS -->
 <script>
-  const images = ['Banana 1.png','Banana 2.png','Banana 3.png','Banana 4.png'];
+  const images = [
+    'Banana 1.png',
+    'Banana 2.png',
+    'Banana 3.png',
+    'Banana 4.png'
+  ];
+
   let currentIndex = 0;
   const mainImage = document.getElementById('mainImage');
   const thumbs = document.querySelectorAll('.thumb');
@@ -285,31 +288,49 @@
       mainImage.src = images[currentIndex];
       mainImage.style.opacity = 1;
     }, 300);
+
     thumbs.forEach(t => t.classList.remove('active'));
     thumbs[index].classList.add('active');
   }
 
-  function addToCart() {
-    const qty = parseInt(document.getElementById("count").value);
-    const price = 250;
-    const total = qty * price;
-
-    const cartHTML = `
-      <p><strong>Banana Powder (200g)</strong></p>
-      <p>Quantity: ${qty}</p>
-      <p>Price per pack: ₹${price}</p>
-      <p><strong>Total: ₹${total}</strong></p>
-    `;
-    document.getElementById("cartDetails").innerHTML = cartHTML;
-    document.getElementById("cartPopup").classList.add("active");
+  function autoSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    changeImage(currentIndex);
   }
 
-  function closeCart() {
-    document.getElementById("cartPopup").classList.remove("active");
-  }
+  setInterval(autoSlide, 4000);
 
-  function checkout() {
-    alert("Proceeding to checkout... (coming soon)");
+  const swipeArea = document.getElementById('swipeArea');
+  let startX = 0;
+
+  swipeArea.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  swipeArea.addEventListener('touchend', (e) => {
+    let endX = e.changedTouches[0].clientX;
+    handleSwipe(startX, endX);
+  });
+
+  swipeArea.addEventListener('mousedown', (e) => {
+    startX = e.clientX;
+  });
+
+  swipeArea.addEventListener('mouseup', (e) => {
+    let endX = e.clientX;
+    handleSwipe(startX, endX);
+  });
+
+  function handleSwipe(start, end) {
+    const diff = start - end;
+    if (Math.abs(diff) > 30) {
+      if (diff > 0) {
+        currentIndex = (currentIndex + 1) % images.length;
+      } else {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+      }
+      changeImage(currentIndex);
+    }
   }
 </script>
 
