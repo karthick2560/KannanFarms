@@ -178,17 +178,6 @@
       margin-bottom: 10px;
     }
 
-    .whatsapp-button {
-      display: inline-block;
-      margin-top: 30px;
-      background-color: #25d366;
-      color: white;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-
     @media (max-width: 768px) {
       .product-page {
         flex-direction: column;
@@ -205,6 +194,7 @@
 <body>
 
   <div class="breadcrumb">
+    <strong>Home</strong> / Banana Powder
   </div>
 
   <div class="product-page">
@@ -241,7 +231,7 @@
         </div>
       </div>
 
-      <button class="add-to-cart">ADD TO CART</button>
+      <button class="add-to-cart" onclick="goToCart()">ADD TO CART</button>
     </div>
   </div>
 
@@ -282,10 +272,6 @@
       <li>🍌 Safe for infants, toddlers, fitness lovers, and seniors</li>
       <li>🍌 100% Natural and Homegrown</li>
     </ul>
-
-    <p style="display:none;">
-      banana powder India, natural banana powder for babies, banana powder for gym, organic banana powder, sugar-free banana powder, Kannan Farms banana powder, FSSAI banana powder Tamil Nadu, buy banana powder online, pure fruit powder for weight gain
-    </p>
   </div>
 
   <script>
@@ -316,6 +302,13 @@
         quantity--;
         qtySpan.innerText = quantity;
       }
+    }
+
+    function goToCart() {
+      const productName = "Banana Powder";
+      const unitPrice = 250;
+      const totalPrice = unitPrice * quantity;
+      window.location.href = `cart.html?product=${encodeURIComponent(productName)}&qty=${quantity}&price=${totalPrice}`;
     }
   </script>
 
