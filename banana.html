@@ -305,11 +305,23 @@
     }
 
     function goToCart() {
-      const productName = "Banana Powder";
-      const unitPrice = 250;
-      const totalPrice = unitPrice * quantity;
-      window.location.href = `cart.html?product=${encodeURIComponent(productName)}&qty=${quantity}&price=${totalPrice}`;
-    }
+  const productName = "Banana Powder"; // change this per product
+  const unitPrice = 250; // change this per product
+  const item = {
+    name: productName,
+    qty: quantity,
+    price: unitPrice
+  };
+
+  // Store multiple items in localStorage
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(item);
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Redirect to cart
+  window.location.href = "cart.html";
+}
+
   </script>
 
 </body>
