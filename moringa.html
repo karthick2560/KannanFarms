@@ -4,322 +4,323 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moringa Powder - Kannan Farms</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+   <style>
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #f4fff4, #f8f8f8);
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    header {
-      background-color: #ffffff;
-      text-align: center;
-      padding: 20px 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    body {
+      background-color: #f9f9f9;
+      padding: 30px;
+      color: #222;
     }
 
-    header img {
-      max-height: 80px;
-    }
-
-    header h1 {
-      margin: 10px 0 5px;
-      font-size: 28px;
-    }
-
-    header p {
-      font-size: 16px;
+    .breadcrumb {
+      font-size: 14px;
+      margin-bottom: 20px;
       color: #666;
-      margin: 0;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    .breadcrumb strong {
+      color: #000;
     }
 
-    .product {
-      text-align: center;
+    .product-page {
+      display: flex;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .thumbnail-column {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .thumbnail-column img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border 0.3s;
+    }
+
+    .thumbnail-column img.active,
+    .thumbnail-column img:hover {
+      border: 2px solid #c0942d;
     }
 
     .main-image {
-      position: relative;
-      width: 100%;
-      height: 700px;
-      overflow: hidden;
-      border-radius: 12px;
-      user-select: none;
+      flex: 1;
     }
 
     .main-image img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-height: 700px;
+      object-fit: contain;
       border-radius: 12px;
-      transition: opacity 0.6s ease-in-out;
-      pointer-events: none;
     }
 
-    .thumbnails {
+    .product-details {
+      flex: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 10px;
-      margin-top: 15px;
-      overflow-x: auto;
-      padding-bottom: 10px;
     }
 
-    .thumbnails img {
-      width: 70px;
-      height: 70px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s, border 0.3s;
-      border: 2px solid transparent;
-    }
-
-    .thumbnails img.active {
-      border-color: #2c7a2f;
-      transform: scale(1.05);
-    }
-
-    .product h2 {
-      font-size: 26px;
-      margin: 20px 0 10px;
-      color: #2c7a2f;
-    }
-
-    .product p {
-      font-size: 16px;
-      color: #444;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .section-title {
-      font-size: 20px;
-      color: #2c7a2f;
-      margin-top: 30px;
+    .product-details h1 {
+      font-size: 32px;
       margin-bottom: 10px;
     }
 
-    ul.benefits-list {
-      text-align: left;
-      max-width: 700px;
-      margin: 0 auto 20px;
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .highlights {
+      margin-bottom: 20px;
+    }
+
+    .highlights h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .highlights ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .highlights li {
+      font-size: 16px;
+      margin-bottom: 6px;
+      position: relative;
       padding-left: 20px;
     }
 
-    ul.benefits-list li {
-      margin-bottom: 10px;
-      font-size: 15px;
-      line-height: 1.5;
+    .highlights li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
     }
 
-    .whatsapp-button {
-      display: inline-block;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+
+    .quantity-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .quantity-box button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .quantity-box span {
+      padding: 0 15px;
+      font-size: 18px;
+    }
+
+    .add-to-cart {
+      background-color: #000;
+      color: #fff;
+      padding: 12px 30px;
       font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       transition: background 0.3s;
     }
 
-    .whatsapp-button:hover {
-      background-color: #1ebe5d;
+    .add-to-cart:hover {
+      background-color: #333;
     }
 
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #f1f1f1;
-      margin-top: 40px;
-      font-size: 14px;
-      color: #777;
+    .extra-content {
+      max-width: 1000px;
+      margin: 60px auto 0;
+      font-size: 17px;
+      line-height: 1.6;
     }
 
-    @media (max-width: 600px) {
-      .main-image {
-        aspect-ratio: 4 / 3;
+    .extra-content h2, .extra-content h3 {
+      margin-top: 30px;
+      color: #222;
+    }
+
+    .extra-content ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .extra-content ul li {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .product-page {
+        flex-direction: column;
+        gap: 20px;
       }
 
-      .thumbnails img {
-        width: 60px;
-        height: 60px;
-      }
-
-      .product h2 {
-        font-size: 22px;
-      }
-
-      .whatsapp-button {
-        padding: 10px 20px;
-        font-size: 14px;
+      .thumbnail-column {
+        flex-direction: row;
+        justify-content: center;
       }
     }
+  </style>
   </style>
 </head>
 <body>
 
-<header>
-  <img src="Logowoback.png" alt="Kannan Farms Logo">
-  <h1>Kannan Farms</h1>
-  <p>Natural Products for a Healthier You</p>
-</header>
-
-<div class="container">
-  <div class="product">
-    <div class="main-image" id="swipeArea">
-      <img id="mainImage" src="Moringa 1.png" alt="Main Moringa Image">
-    </div>
-    <div class="thumbnails">
-      <img src="Moringa 1.png" alt="Thumb 1" class="thumb active" onclick="changeImage(0)">
-      <img src="Moringa 2.png" alt="Thumb 2" class="thumb" onclick="changeImage(1)">
-      <img src="Moringa 3.png" alt="Thumb 3" class="thumb" onclick="changeImage(2)">
-      <img src="Moinga 4.png" alt="Thumb 4" class="thumb" onclick="changeImage(3)">
-    </div>
-    <h2>Moringa Powder</h2>
-    <p>Moringa Powder is a powerhouse of vitamins and antioxidants. It boosts immunity, improves energy, and supports overall well-being. Sourced fresh and naturally processed for maximum benefits.</p>
-    <!-- Insert this inside your existing <div class="product"> right after the existing description paragraph -->
-
-<h3 class="section-title">Certified & Trusted Quality</h3>
-<p>Our Moringa Powder is <strong>FSSAI certified</strong>, ensuring it meets the highest standards of food safety and hygiene. Each batch is carefully inspected and packaged in clean, food-grade materials to retain freshness and purity.</p>
-
-<h3 class="section-title">100% Natural | No Preservatives | Farm-Fresh Goodness</h3>
-<p>Kannan Farms Moringa Powder is grown using traditional farming methods and is solar-dried to retain nutrients without using chemicals. It contains <strong>no added preservatives, no artificial colors or flavors, and no additives</strong> — just pure moringa, the way nature intended.</p>
-
-<h3 class="section-title">Health Benefits of Moringa Powder</h3>
-<ul class="benefits-list">
-  <li>✔️ Boosts immunity and helps fight infections naturally</li>
-  <li>✔️ Rich in plant-based protein – ideal for vegetarians and fitness lovers</li>
-  <li>✔️ Aids in weight management and improves digestion</li>
-  <li>✔️ Supports brain health, improves focus and memory</li>
-  <li>✔️ Provides powerful antioxidants that reduce cellular damage</li>
-  <li>✔️ Detoxifies liver and maintains blood sugar levels</li>
-</ul>
-
-<h3 class="section-title">Moringa: Nature’s Multivitamin</h3>
-<p>Known as the “<strong>Miracle Tree</strong>,” Moringa contains over 90 nutrients and 46 antioxidants. It's one of the most nutrient-dense superfoods available, packed with vitamins A, B, C, E, iron, calcium, and magnesium — all essential for a healthy lifestyle.</p>
-
-<h3 class="section-title">Perfect for Daily Use</h3>
-<p>✔️ Mix 1 tsp in warm water, smoothies, juices, or sprinkle on your food.  
-✔️ Safe for all age groups – from kids to the elderly.  
-✔️ Ideal for daily wellness, athletic performance, skin and hair nourishment, and detox support.</p>
-
-<h3 class="section-title">Locally Grown with Love, from Our Farm to Your Family</h3>
-<p>At Kannan Farms, we believe in delivering <strong>farm-fresh nutrition straight to your home</strong>. Our moringa is hand-harvested, naturally processed, and hygienically packed to preserve every ounce of goodness. Experience the purity of nature with every spoonful.</p>
-
-<!-- <h3 class="section-title">SEO Keywords You’re Targeting (For Hidden SEO Boosting)</h3> -->
-    
-<!-- Optional: These can be commented out or moved to meta tag descriptions if needed -->
-<p style="display:none;">
-  organic moringa powder, moringa powder India, buy natural moringa powder, FSSAI certified superfoods, pure moringa online, vegan superfoods India, farm fresh moringa Tamil Nadu, no preservative moringa, antioxidant-rich superfood
-</p>
-
-    <h3 class="section-title">Why Choose Kannan Farms Moringa Powder?</h3>
-    <ul class="benefits-list">
-      <li>✅ Rich in Vitamin A, C, Calcium, Iron & Potassium</li>
-      <li>✅ Strengthens the immune system and reduces inflammation</li>
-      <li>✅ Helps regulate blood sugar and cholesterol levels</li>
-      <li>✅ Aids digestion and detoxifies the body naturally</li>
-      <li>✅ Improves skin health and hair strength</li>
-      <li>✅ Boosts stamina and supports muscle growth</li>
-      <li>✅ Acts as a natural multivitamin and superfood</li>
-    </ul>
-
-    <h3 class="section-title">Pure. Honest. Natural.</h3>
-    <p>Our Moringa Powder is <strong>made with love</strong> — hand-harvested from clean farms, solar dried to preserve nutrients, and finely ground without any preservatives, chemicals, or artificial flavors. 100% Natural. 100% You.</p>
-
-    <h3 class="section-title">Did You Know?</h3>
-    <ul class="benefits-list">
-      <li>🌿 Moringa contains 7x more Vitamin C than oranges</li>
-      <li>🥬 It has 4x more calcium than milk</li>
-      <li>💪 NASA listed Moringa as one of the most nutrient-dense plants on Earth</li>
-      <li>🌱 Used in Ayurvedic medicine to treat over 300 conditions</li>
-    </ul>
-
-    <a class="whatsapp-button" href="https://wa.me/916381594945?text=I%20want%20to%20order%20Moringa%20Powder">Order on WhatsApp</a>
+  <div class="breadcrumb">
   </div>
-</div>
 
-<footer>
-  <p>&copy; 2025 Kannan Farms. All rights reserved.</p>
-</footer>
+  <div class="product-page">
+    <div class="thumbnail-column">
+      <img src="Moringa 1.png" alt="thumb1" class="thumb active" onclick="changeImage(0)">
+      <img src="Moringa 2.png" alt="thumb2" class="thumb" onclick="changeImage(1)">
+      <img src="Moringa 3.png" alt="thumb3" class="thumb" onclick="changeImage(2)">
+      <img src="Moinga 4.png" alt="thumb4" class="thumb" onclick="changeImage(3)">
+    </div>
 
-<script>
-  const images = [
-    'Moringa 1.png',
-    'Moringa 2.png',
-    'Moringa 3.png',
-    'Moringa 4.png'
-  ];
+    <div class="main-image">
+      <img id="mainImg" src="Moringa 1.png" alt="Moringa Powder Main">
+    </div>
 
-  let currentIndex = 0;
-  const mainImage = document.getElementById('mainImage');
-  const thumbs = document.querySelectorAll('.thumb');
+    <div class="product-details">
+      <h1>Moringa Powder</h1>
+      <div class="price">Rs. 250.00 (200g)</div>
 
-  function changeImage(index) {
-    currentIndex = index;
-    mainImage.style.opacity = 0;
-    setTimeout(() => {
-      mainImage.src = images[currentIndex];
-      mainImage.style.opacity = 1;
-    }, 300);
+      <div class="highlights">
+        <h3>Highlights</h3>
+        <ul>
+          <li>100% Pure Sun-dried Moringa Leaves</li>
+          <li>No Additives, No Preservatives</li>
+          <li>Rich in Iron, Calcium & Antioxidants</li>
+          <li>Ideal for Immunity, Detox & Vitality</li>
+        </ul>
+      </div>
 
-    thumbs.forEach(t => t.classList.remove('active'));
-    thumbs[index].classList.add('active');
-  }
+      <div class="quantity-selector">
+        <div class="quantity-box">
+          <button onclick="decreaseQty()">−</button>
+          <span id="qty">1</span>
+          <button onclick="increaseQty()">+</button>
+        </div>
+      </div>
 
-  function autoSlide() {
-    currentIndex = (currentIndex + 1) % images.length;
-    changeImage(currentIndex);
-  }
+      <button class="add-to-cart" onclick="goToCart()">ADD TO CART</button>
+    </div>
+  </div>
 
-  setInterval(autoSlide, 4000);
+  <div class="extra-content">
+    <h2>Moringa Powder</h2>
+    <p>Moringa Powder is a nutrient powerhouse made from 100% sun-dried moringa leaves. Packed with essential vitamins, minerals, and antioxidants — it’s nature’s multivitamin for energy, immunity, and wellness.</p>
 
-  const swipeArea = document.getElementById('swipeArea');
-  let startX = 0;
+    <h3 class="section-title">Naturally Nourishing</h3>
+    <p>Our Moringa Powder is <strong>FSSAI certified</strong>, made under hygienic conditions using freshly harvested moringa leaves. Carefully dried and ground to retain maximum nutrients — with zero artificial additives.</p>
 
-  swipeArea.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-  });
+    <h3 class="section-title">Clean, Pure & Potent</h3>
+    <p>Kannan Farms Moringa Powder contains <strong>no added chemicals, sugar, or flavoring</strong>. Just potent green powder — earthy, healthy, and full of life-giving phytonutrients.</p>
 
-  swipeArea.addEventListener('touchend', (e) => {
-    let endX = e.changedTouches[0].clientX;
-    handleSwipe(startX, endX);
-  });
+    <h3 class="section-title">Health Benefits of Moringa</h3>
+    <ul class="benefits-list">
+      <li>✔️ Boosts immunity and helps fight infections</li>
+      <li>✔️ Rich in iron — supports hemoglobin levels</li>
+      <li>✔️ Detoxifies liver and supports metabolism</li>
+      <li>✔️ Contains calcium for bone strength</li>
+      <li>✔️ Supports skin glow and hair health</li>
+      <li>✔️ Regulates blood sugar and cholesterol</li>
+    </ul>
 
-  swipeArea.addEventListener('mousedown', (e) => {
-    startX = e.clientX;
-  });
+    <h3 class="section-title">How to Use</h3>
+    <p>✅ Add to smoothies or juices  
+    ✅ Stir into warm water or tea  
+    ✅ Sprinkle on salads, soups, or meals  
+    ✅ Blend into protein shakes or energy balls</p>
 
-  swipeArea.addEventListener('mouseup', (e) => {
-    let endX = e.clientX;
-    handleSwipe(startX, endX);
-  });
+    <h3 class="section-title">From Our Farm to You</h3>
+    <p>We grow and process our moringa leaves with love in Tamil Nadu. Handpicked and dried in solar dryers to lock in nutrients, our Moringa Powder is a clean, green superfood you can trust.</p>
 
-  function handleSwipe(start, end) {
-    const diff = start - end;
-    if (Math.abs(diff) > 30) {
-      if (diff > 0) {
-        currentIndex = (currentIndex + 1) % images.length;
-      } else {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-      }
-      changeImage(currentIndex);
+    <h3 class="section-title">Why Choose Kannan Farms?</h3>
+    <ul class="benefits-list">
+      <li>🌿 100% Pure Moringa – No Additives</li>
+      <li>🌿 Homegrown & Sustainably Harvested</li>
+      <li>🌿 FSSAI Licensed for Safe Consumption</li>
+      <li>🌿 Trusted by Health Enthusiasts and Families</li>
+      <li>🌿 Packed with Love & Nutrition</li>
+    </ul>
+  </div>
+
+  <script>
+    const images = [
+      'Moringa 1.png',
+      'Moringa 2.png',
+      'Moringa 3.png',
+      'Moinga 4.png'
+    ];
+
+    function changeImage(index) {
+      document.getElementById('mainImg').src = images[index];
+      document.querySelectorAll('.thumb').forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
     }
-  }
-</script>
+
+    let quantity = 1;
+    const qtySpan = document.getElementById('qty');
+
+    function increaseQty() {
+      quantity++;
+      qtySpan.innerText = quantity;
+    }
+
+    function decreaseQty() {
+      if (quantity > 1) {
+        quantity--;
+        qtySpan.innerText = quantity;
+      }
+    }
+
+    function goToCart() {
+      const productName = "Moringa Powder"; // changed for moringa
+      const unitPrice = 250; // same price
+      const item = {
+        name: productName,
+        qty: quantity,
+        price: unitPrice
+      };
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(item);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      window.location.href = "cart.html";
+    }
+  </script>
 
 </body>
 </html>
