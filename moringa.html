@@ -4,323 +4,207 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moringa Powder - Kannan Farms</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-   <style>
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f3f3;
+      color: #333;
     }
 
-    body {
-      background-color: #f9f9f9;
-      padding: 30px;
-      color: #222;
-    }
-
-    .breadcrumb {
-      font-size: 14px;
-      margin-bottom: 20px;
-      color: #666;
-    }
-
-    .breadcrumb strong {
-      color: #000;
-    }
-
-    .product-page {
-      display: flex;
-      gap: 40px;
-      max-width: 1200px;
+    .container {
+      max-width: 900px;
       margin: auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      margin-top: 30px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     }
 
-    .thumbnail-column {
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2e7d32;
+    }
+
+    .product {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    .thumbnail-column img {
-      width: 80px;
-      height: 80px;
+    .product-imgs {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .product-imgs img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .thumbs {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .thumbs img {
+      width: 60px;
+      height: 60px;
       object-fit: cover;
       border: 2px solid transparent;
       border-radius: 6px;
       cursor: pointer;
-      transition: border 0.3s;
+      transition: 0.3s ease;
     }
 
-    .thumbnail-column img.active,
-    .thumbnail-column img:hover {
-      border: 2px solid #c0942d;
-    }
-
-    .main-image {
-      flex: 1;
-    }
-
-    .main-image img {
-      width: 100%;
-      max-height: 700px;
-      object-fit: contain;
-      border-radius: 12px;
+    .thumbs img.active, .thumbs img:hover {
+      border-color: #2e7d32;
     }
 
     .product-details {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .product-details h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+      min-width: 280px;
     }
 
     .price {
-      font-size: 28px;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 20px;
+      font-size: 24px;
+      margin: 10px 0;
+      color: #e65100;
     }
 
-    .highlights {
-      margin-bottom: 20px;
-    }
-
-    .highlights h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .highlights ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .highlights li {
-      font-size: 16px;
-      margin-bottom: 6px;
-      position: relative;
-      padding-left: 20px;
-    }
-
-    .highlights li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-    }
-
-    .quantity-selector {
+    .qty-control {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
       gap: 10px;
+      margin-top: 10px;
     }
 
-    .quantity-box {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .quantity-box button {
-      background: none;
-      border: none;
-      font-size: 20px;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-    }
-
-    .quantity-box span {
-      padding: 0 15px;
+    .qty-control button {
+      padding: 5px 15px;
       font-size: 18px;
-    }
-
-    .add-to-cart {
-      background-color: #000;
-      color: #fff;
-      padding: 12px 30px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
     }
 
-    .add-to-cart:hover {
-      background-color: #333;
+    .add-cart-btn {
+      margin-top: 20px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
-    .extra-content {
-      max-width: 1000px;
-      margin: 60px auto 0;
-      font-size: 17px;
+    .section-title {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #2e7d32;
+      border-bottom: 2px solid #c5e1a5;
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
       line-height: 1.6;
     }
-
-    .extra-content h2, .extra-content h3 {
-      margin-top: 30px;
-      color: #222;
-    }
-
-    .extra-content ul {
-      margin-top: 10px;
-      padding-left: 20px;
-    }
-
-    .extra-content ul li {
-      margin-bottom: 10px;
-    }
-
-    @media (max-width: 768px) {
-      .product-page {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .thumbnail-column {
-        flex-direction: row;
-        justify-content: center;
-      }
-    }
-  </style>
   </style>
 </head>
 <body>
 
-  <div class="breadcrumb">
-  </div>
-
-  <div class="product-page">
-    <div class="thumbnail-column">
-      <img src="Moringa 1.png" alt="thumb1" class="thumb active" onclick="changeImage(0)">
-      <img src="Moringa 2.png" alt="thumb2" class="thumb" onclick="changeImage(1)">
-      <img src="Moringa 3.png" alt="thumb3" class="thumb" onclick="changeImage(2)">
-      <img src="Moinga 4.png" alt="thumb4" class="thumb" onclick="changeImage(3)">
+<div class="container">
+  <h1>Moringa Powder</h1>
+  <div class="product">
+    <div class="product-imgs">
+      <img id="mainImg" src="Moringa 1.png" alt="Moringa Powder" />
+      <div class="thumbs">
+        <img class="thumb active" src="Moringa 1.png" onclick="changeImage(0)" />
+        <img class="thumb" src="Moringa 2.png" onclick="changeImage(1)" />
+        <img class="thumb" src="Moringa 3.png" onclick="changeImage(2)" />
+        <img class="thumb" src="Moinga 4.png" onclick="changeImage(3)" />
+      </div>
     </div>
-
-    <div class="main-image">
-      <img id="mainImg" src="Moringa 1.png" alt="Moringa Powder Main">
-    </div>
-
     <div class="product-details">
-      <h1>Moringa Powder</h1>
-      <div class="price">Rs. 250.00 (200g)</div>
+      <p class="price">₹250 for 200g pack</p>
 
-      <div class="highlights">
-        <h3>Highlights</h3>
-        <ul>
-          <li>100% Pure Sun-dried Moringa Leaves</li>
-          <li>No Additives, No Preservatives</li>
-          <li>Rich in Iron, Calcium & Antioxidants</li>
-          <li>Ideal for Immunity, Detox & Vitality</li>
-        </ul>
+      <div class="qty-control">
+        <button onclick="decreaseQty()">-</button>
+        <span id="qty">1</span>
+        <button onclick="increaseQty()">+</button>
       </div>
 
-      <div class="quantity-selector">
-        <div class="quantity-box">
-          <button onclick="decreaseQty()">−</button>
-          <span id="qty">1</span>
-          <button onclick="increaseQty()">+</button>
-        </div>
-      </div>
+      <button class="add-cart-btn" onclick="goToCart()">Add to Cart</button>
 
-      <button class="add-to-cart" onclick="goToCart()">ADD TO CART</button>
+      <div class="section-title">Why Moringa Powder?</div>
+      <p>
+        Moringa Powder is a powerhouse of essential nutrients and antioxidants. 
+        Perfect for boosting immunity, enhancing energy levels, and promoting overall wellness. 
+        Made from sun-dried moringa leaves – 100% natural and chemical-free.
+      </p>
+
+      <div class="section-title">Certified Safe & Nutritious</div>
+      <p>
+        Our powder is processed in a hygienic facility and lab-tested to ensure purity and safety. 
+        A great supplement for children, adults, and fitness enthusiasts alike.
+      </p>
     </div>
   </div>
+</div>
 
-  <div class="extra-content">
-    <h2>Moringa Powder</h2>
-    <p>Moringa Powder is a nutrient powerhouse made from 100% sun-dried moringa leaves. Packed with essential vitamins, minerals, and antioxidants — it’s nature’s multivitamin for energy, immunity, and wellness.</p>
+<script>
+  const images = [
+    'Moringa 1.png',
+    'Moringa 2.png',
+    'Moringa 3.png',
+    'Moinga 4.png'
+  ];
 
-    <h3 class="section-title">Naturally Nourishing</h3>
-    <p>Our Moringa Powder is <strong>FSSAI certified</strong>, made under hygienic conditions using freshly harvested moringa leaves. Carefully dried and ground to retain maximum nutrients — with zero artificial additives.</p>
+  function changeImage(index) {
+    document.getElementById('mainImg').src = images[index];
+    document.querySelectorAll('.thumb').forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+  }
 
-    <h3 class="section-title">Clean, Pure & Potent</h3>
-    <p>Kannan Farms Moringa Powder contains <strong>no added chemicals, sugar, or flavoring</strong>. Just potent green powder — earthy, healthy, and full of life-giving phytonutrients.</p>
+  let quantity = 1;
+  const qtySpan = document.getElementById('qty');
 
-    <h3 class="section-title">Health Benefits of Moringa</h3>
-    <ul class="benefits-list">
-      <li>✔️ Boosts immunity and helps fight infections</li>
-      <li>✔️ Rich in iron — supports hemoglobin levels</li>
-      <li>✔️ Detoxifies liver and supports metabolism</li>
-      <li>✔️ Contains calcium for bone strength</li>
-      <li>✔️ Supports skin glow and hair health</li>
-      <li>✔️ Regulates blood sugar and cholesterol</li>
-    </ul>
+  function increaseQty() {
+    quantity++;
+    qtySpan.innerText = quantity;
+  }
 
-    <h3 class="section-title">How to Use</h3>
-    <p>✅ Add to smoothies or juices  
-    ✅ Stir into warm water or tea  
-    ✅ Sprinkle on salads, soups, or meals  
-    ✅ Blend into protein shakes or energy balls</p>
-
-    <h3 class="section-title">From Our Farm to You</h3>
-    <p>We grow and process our moringa leaves with love in Tamil Nadu. Handpicked and dried in solar dryers to lock in nutrients, our Moringa Powder is a clean, green superfood you can trust.</p>
-
-    <h3 class="section-title">Why Choose Kannan Farms?</h3>
-    <ul class="benefits-list">
-      <li>🌿 100% Pure Moringa – No Additives</li>
-      <li>🌿 Homegrown & Sustainably Harvested</li>
-      <li>🌿 FSSAI Licensed for Safe Consumption</li>
-      <li>🌿 Trusted by Health Enthusiasts and Families</li>
-      <li>🌿 Packed with Love & Nutrition</li>
-    </ul>
-  </div>
-
-  <script>
-    const images = [
-      'Moringa 1.png',
-      'Moringa 2.png',
-      'Moringa 3.png',
-      'Moinga 4.png'
-    ];
-
-    function changeImage(index) {
-      document.getElementById('mainImg').src = images[index];
-      document.querySelectorAll('.thumb').forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
-    }
-
-    let quantity = 1;
-    const qtySpan = document.getElementById('qty');
-
-    function increaseQty() {
-      quantity++;
+  function decreaseQty() {
+    if (quantity > 1) {
+      quantity--;
       qtySpan.innerText = quantity;
     }
+  }
 
-    function decreaseQty() {
-      if (quantity > 1) {
-        quantity--;
-        qtySpan.innerText = quantity;
-      }
+  function goToCart() {
+    const productName = "Moringa Powder";
+    const unitPrice = 250;
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingItemIndex = cart.findIndex(item => item.name === productName);
+
+    if (existingItemIndex !== -1) {
+      cart[existingItemIndex].qty += quantity;
+    } else {
+      cart.push({ name: productName, price: unitPrice, qty: quantity });
     }
 
-    function goToCart() {
-      const productName = "Moringa Powder"; // changed for moringa
-      const unitPrice = 250; // same price
-      const item = {
-        name: productName,
-        qty: quantity,
-        price: unitPrice
-      };
-
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(item);
-      localStorage.setItem("cart", JSON.stringify(cart));
-
-      window.location.href = "cart.html";
-    }
-  </script>
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "cart.html";
+  }
+</script>
 
 </body>
 </html>
