@@ -2,22 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kannan Farms - Natural Health Products</title>
-  <meta name="description" content="Kannan Farms is a provider of premium farm-to-table solutions. Dedicated to supporting local farmers and delivering the highest quality products, Kannan Farms offers naturally-sourced offerings perfect for families on the go. The farm's commitment to purity ensures that its products are free of artificial ingredients.">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <style>
     * {
       box-sizing: border-box;
-      transition: all 0.3s ease;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f8f8;
+      background-color: #f0f9f4;
       color: #333;
     }
 
@@ -25,27 +22,24 @@
       background-color: #4CAF50;
       color: white;
       padding: 20px;
-      position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     .logo {
-      position: absolute;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 80px;
+      height: 60px;
     }
 
     .header-text {
+      flex-grow: 1;
       text-align: center;
     }
 
     .header-text h1 {
-      margin: 0;
       font-size: 28px;
+      margin: 0;
     }
 
     .header-text p {
@@ -53,53 +47,63 @@
       font-size: 16px;
     }
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 20px 10px;
-      }
+    .cart-button {
+      background-color: white;
+      color: #4CAF50;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
 
-      .logo {
-        position: static;
-        transform: none;
-        margin-bottom: 10px;
-        height: 80px;
-      }
-
-      .header-text {
-        text-align: center;
-      }
+    .cart-button:hover {
+      transform: scale(1.1);
     }
 
     .container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 20px;
+      padding: 30px;
+      gap: 20px;
     }
 
     .product {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin: 15px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
       padding: 20px;
-      width: 300px;
-      text-align: center;
-      transition: transform 0.3s ease;
+      width: 320px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.8s ease;
     }
 
     .product:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .carousel {
       position: relative;
       width: 100%;
-      padding-top: 133.33%;
+      padding-top: 100%;
       overflow: hidden;
       border-radius: 10px;
+      margin-bottom: 15px;
     }
 
     .carousel img {
@@ -110,53 +114,38 @@
       height: 100%;
       object-fit: cover;
       display: none;
-      opacity: 0;
     }
 
     .carousel img.active {
       display: block;
-      opacity: 1;
     }
 
     .product h2 {
-      margin: 15px 0 10px;
+      font-size: 20px;
+      color: #2e7d32;
+      margin-bottom: 10px;
     }
 
     .product p {
       font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
     }
 
     .buy-now-button {
-      background-color: #ff9800;
+      background-color: #FF9800;
       color: white;
       border: none;
       padding: 10px 20px;
-      margin-top: 10px;
-      font-size: 16px;
-      border-radius: 8px;
+      font-size: 15px;
+      border-radius: 5px;
       cursor: pointer;
       text-decoration: none;
-      display: inline-block;
+      transition: background 0.3s ease;
     }
 
-    .cart-button {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      font-size: 16px;
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      z-index: 1000;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .cart-button:hover {
-      background-color: #45a049;
+    .buy-now-button:hover {
+      background-color: #e68a00;
     }
 
     footer {
@@ -164,12 +153,20 @@
       padding: 20px;
       background-color: #4CAF50;
       color: white;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .header-text h1 {
+        font-size: 22px;
+      }
+      .product {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
-
-  <a class="cart-button" href="cart.html">🛒 Cart</a>
 
   <header>
     <img class="logo" src="Logowoback.png" alt="Kannan Farms Logo">
@@ -177,6 +174,7 @@
       <h1>Kannan Farms</h1>
       <p>Natural Products for a Healthier You</p>
     </div>
+    <a href="cart.html" class="cart-button">🛒 View Cart</a>
   </header>
 
   <div class="container">
