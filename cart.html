@@ -1,127 +1,210 @@
-<style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f4f4;
-    padding: 30px;
-    color: #222;
-    transition: background-color 0.3s ease;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Kannan Farms</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      padding: 30px;
+      color: #222;
+      transition: background-color 0.3s ease;
+    }
+
+    .cart-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cart-container:hover {
+      transform: scale(1.01);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: #333;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideIn 0.5s ease-in-out;
+      transition: background 0.3s;
+    }
+
+    .cart-item:hover {
+      background: #f9f9f9;
+    }
+
+    .cart-item h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .cart-summary {
+      text-align: right;
+      margin-top: 25px;
+      font-weight: bold;
+      font-size: 20px;
+      color: #444;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    textarea {
+      width: 100%;
+      margin-top: 30px;
+      height: 100px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+      transition: border-color 0.3s;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #25d366;
+      box-shadow: 0 0 5px rgba(37, 211, 102, 0.3);
+    }
+
+    .btns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btns a, .btns button {
+      padding: 12px 25px;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .btns a:hover,
+    .btns button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .whatsapp {
+      background-color: #25d366;
+      color: white;
+    }
+
+    .clear-cart {
+      background-color: #ff4444;
+      color: white;
+    }
+
+    .back-btn {
+      background-color: #000;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cart-container">
+  <h1>Your Cart</h1>
+  <div id="cartItems"></div>
+  <div class="cart-summary">
+    Grand Total: ₹<span id="grandTotal">0</span>
+  </div>
+
+  <textarea id="address" placeholder="Enter your delivery address..."></textarea>
+
+  <div class="btns">
+    <button class="whatsapp" onclick="sendToWhatsApp()">Order on WhatsApp</button>
+    <button class="clear-cart" onclick="clearCart()">Clear Cart</button>
+    <a href="index.html" class="back-btn">Continue Shopping</a>
+  </div>
+</div>
+
+<script>
+  // Load cart items
+  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartContainer = document.getElementById("cartItems");
+  const grandTotalEl = document.getElementById("grandTotal");
+  let total = 0;
+
+  cartItems.forEach((item, index) => {
+    const itemTotal = item.qty * item.price;
+    total += itemTotal;
+
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+    div.innerHTML = `
+      <div>
+        <h2>${item.name}</h2>
+        <p>Quantity: ${item.qty}</p>
+        <p>Unit Price: ₹${item.price}</p>
+      </div>
+      <div>
+        <p>Total: ₹${itemTotal}</p>
+      </div>
+    `;
+    cartContainer.appendChild(div);
+  });
+
+  grandTotalEl.innerText = total;
+
+  function sendToWhatsApp() {
+    const address = document.getElementById("address").value.trim();
+    if (!address) {
+      alert("Please enter your delivery address.");
+      return;
+    }
+
+    let message = `🛒 *Order Details - Kannan Farms*:%0A`;
+    cartItems.forEach(item => {
+      message += `• ${item.name} - ${item.qty} x ₹${item.price} = ₹${item.qty * item.price}%0A`;
+    });
+    message += `------------------%0A`;
+    message += `Total: ₹${total}%0A`;
+    message += `📍 *Address:* ${encodeURIComponent(address)}`;
+
+    const whatsappNumber = "916381594945"; // change to your number
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+    window.open(whatsappLink, "_blank");
   }
 
-  .cart-container {
-    max-width: 800px;
-    margin: auto;
-    background: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  function clearCart() {
+    if (confirm("Are you sure you want to clear the cart?")) {
+      localStorage.removeItem("cart");
+      location.reload();
+    }
   }
+</script>
 
-  .cart-container:hover {
-    transform: scale(1.01);
-    box-shadow: 0 14px 35px rgba(0,0,0,0.15);
-  }
-
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 32px;
-    color: #333;
-    animation: fadeIn 1s ease-in-out;
-  }
-
-  .cart-item {
-    border-bottom: 1px solid #ddd;
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    animation: slideIn 0.5s ease-in-out;
-    transition: background 0.3s;
-  }
-
-  .cart-item:hover {
-    background: #f9f9f9;
-  }
-
-  .cart-item h2 {
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
-
-  .cart-summary {
-    text-align: right;
-    margin-top: 25px;
-    font-weight: bold;
-    font-size: 20px;
-    color: #444;
-    animation: fadeIn 1.2s ease-in-out;
-  }
-
-  textarea {
-    width: 100%;
-    margin-top: 30px;
-    height: 100px;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    resize: none;
-    transition: border-color 0.3s;
-  }
-
-  textarea:focus {
-    outline: none;
-    border-color: #25d366;
-    box-shadow: 0 0 5px rgba(37, 211, 102, 0.3);
-  }
-
-  .btns {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .btns a, .btns button {
-    padding: 12px 25px;
-    font-size: 16px;
-    text-decoration: none;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.3s;
-  }
-
-  .btns a:hover,
-  .btns button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  }
-
-  .whatsapp {
-    background-color: #25d366;
-    color: white;
-  }
-
-  .clear-cart {
-    background-color: #ff4444;
-    color: white;
-  }
-
-  .back-btn {
-    background-color: #000;
-    color: white;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-</style>
+</body>
+</html>
