@@ -1,247 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kannan Farms - Natural Health Products</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kannan Farms - Natural Health Products</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-favicon.ico
+    body {
+      background-color: #FFF8F0;
+      color: #333;
+    }
 
-<style>
+    header {
+      background-color: #1B1B1B;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+    }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-}
+    .logo {
+      height: 60px;
+    }
 
-body {
-  background: linear-gradient(135deg, #FFF8F0, #F3F7F2);
-  color: #333;
-}
+    .header-text {
+      flex-grow: 1;
+      text-align: center;
+    }
 
-/* HEADER */
-header {
-  background: linear-gradient(90deg, #1B1B1B, #2C2C2C);
-  color: white;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
+    .header-text h1 {
+      font-size: 28px;
+      margin: 0;
+    }
 
-.logo {
-  height: 60px;
-}
+    .header-text p {
+      margin: 5px 0 0;
+      font-size: 16px;
+    }
 
-.header-text {
-  flex-grow: 1;
-  text-align: center;
-}
+    .cart-button {
+      background-color: #E8C872;
+      color: #121212;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      z-index: 1000;
+    }
 
-.header-text h1 {
-  font-size: 30px;
-  letter-spacing: 1px;
-}
+    .cart-button:hover {
+      transform: scale(1.1);
+    }
 
-.header-text p {
-  opacity: 0.8;
-}
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px;
+      gap: 20px;
+    }
 
-.cart-button {
-  background: linear-gradient(135deg, #E8C872, #D4B64C);
+    .product {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 320px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .product h2 {
+      font-size: 20px;
+      color: #E8C872;
+      margin-bottom: 10px;
+    }
+
+    .product p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+   .buy-now {
+  background-color: #E8C872;
   color: #121212;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 18px;
   font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.cart-button:hover {
-  transform: translateY(-3px) scale(1.05);
-}
-
-/* CONTAINER */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 40px;
-  gap: 25px;
-}
-
-/* PRODUCT CARD */
-.product {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  border-radius: 18px;
-  padding: 20px;
-  width: 320px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
-}
-
-.product:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-}
-
-/* CAROUSEL */
-.carousel {
-  position: relative;
-  width: 100%;
-  padding-top: 100%;
-  overflow: hidden;
+  border: none;
   border-radius: 12px;
-  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.carousel img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
-}
-
-.carousel img.active {
-  opacity: 1;
-}
-
-/* TEXT */
-.product h2 {
-  font-size: 22px;
-  color: #C9A23F;
-  margin-bottom: 10px;
-}
-
-.product p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-/* BUTTON */
-.buy-now-button {
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  background: linear-gradient(135deg, #E8C872, #D4B64C);
-  color: #121212;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.buy-now-button:hover {
+.buy-now:hover {
+  background-color: #D4B64C;
   transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #121212;
-  color: #E8C872;
-  font-size: 14px;
-}
 
-/* MOBILE */
-@media (max-width: 768px) {
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #121212;
+      color: #E8C872;
+      font-size: 14px;
+    }
 
-  .header-text h1 {
-    font-size: 22px;
-  }
-
-  .product {
-    width: 90%;
-  }
-
-  .cart-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-  }
-
-}
-
-</style>
+    @media (max-width: 768px) {
+      .header-text h1 {
+        font-size: 22px;
+      }
+      .product {
+        width: 90%;
+      }
+      .cart-button {
+        position: fixed;
+        bottom: 15px;
+        left: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-  Logowoback.png
-  
-  <div class="header-text">
-    <h1>Kannan Farms</h1>
-    <p>Natural Products for a Healthier You</p>
-  </div>
+  <header>
+    <img class="logo" src="Logowoback.png" alt="Kannan Farms Logo">
+    <div class="header-text">
+      <h1>Kannan Farms</h1>
+      <p>Natural Products for a Healthier You</p>
+    </div>
+    <a href="cart.html" class="cart-button">🛒 View Cart</a>
+  </header>
 
-  cart.html🛒 View Cart</a>
-</header>
-
-<div class="container">
-
-  <!-- BANANA -->
-  <div class="product">
-    <div class="carousel" id="banana-carousel">
-      Banana 1.png
-      Banana 2.png
-      Banana 3.png
-      Banana 4.png
+  <div class="container">
+    <div class="product">
+      <div class="carousel" id="banana-carousel">
+        <img src="Banana 1.png" class="active" alt="Banana Powder 1">
+        <img src="Banana 2.png" alt="Banana Powder 2">
+        <img src="Banana 3.png" alt="Banana Powder 3">
+        <img src="Banana 4.png" alt="Banana Powder 4">
+      </div>
+      <h2>Banana Powder</h2>
+      <p>Ideal for children and gym-goers. Natural weight gain and energy booster.</p>
+      <a class="buy-now-button" href="banana.html">Buy Now</a>
     </div>
 
-    <h2>Banana Powder</h2>
-    <p>Ideal for children and gym-goers. Natural weight gain and energy booster.</p>
-
-    banana.htmlBuy Now</a>
-  </div>
-
-  <!-- MORINGA -->
-  <div class="product">
-    <div class="carousel" id="moringa-carousel">
-      Moringa 1.png
-      Moringa 2.png
-      Moringa 3.png
-      Moinga 4.png
+    <div class="product">
+      <div class="carousel" id="moringa-carousel">
+        <img src="Moringa 1.png" class="active" alt="Moringa Powder 1">
+        <img src="Moringa 2.png" alt="Moringa Powder 2">
+        <img src="Moringa 3.png" alt="Moringa Powder 3">
+        <img src="Moinga 4.png" alt="Moringa Powder 4">
+      </div>
+      <h2>Moringa Powder</h2>
+      <p>Rich in vitamins and antioxidants. A daily dose of health in every spoon.</p>
+      <a class="buy-now-button" href="moringa.html">Buy Now</a>
     </div>
-
-    <h2>Moringa Powder</h2>
-    <p>Rich in vitamins and antioxidants. A daily dose of health in every spoon.</p>
-
-    moringa.html Buy Now</a>
   </div>
 
-</div>
+  <footer>
+    <p>&copy; 2025 Kannan Farms. All rights reserved.</p>
+  </footer>
 
-<footer>
-  <p>&copy; 2025 Kannan Farms. All rights reserved.</p>
-</footer>
+  <script>
+    function setupCarousel(carouselId, interval = 4000) {
+      const carousel = document.getElementById(carouselId);
+      const images = carousel.getElementsByTagName('img');
+      let index = 0;
+      setInterval(() => {
+        images[index].classList.remove('active');
+        index = (index + 1) % images.length;
+        images[index].classList.add('active');
+      }, interval);
+    }
 
-<script>
-function setupCarousel(carouselId, interval = 4000) {
-  const carousel = document.getElementById(carouselId);
-  const images = carousel.getElementsByTagName('img');
-  let index = 0;
-
-  setInterval(() => {
-    images[index].classList.remove('active');
-    index = (index + 1) % images.length;
-    images[index].classList.add('active');
-  }, interval);
-}
-setupCarousel('banana-carousel');
-setupCarousel('moringa-carousel');
-</script>
+    setupCarousel('banana-carousel');
+    setupCarousel('moringa-carousel');
+  </script>
 
 </body>
 </html>
